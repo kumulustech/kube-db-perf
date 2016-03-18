@@ -1,0 +1,13 @@
+startup_message off
+screen -t mongo0 0 ./load_run_mongo0_long.sh 0
+screen -t mongo1 1 ./load_run_mongo0_long.sh 1
+screen -t mongo2 2 ./load_run_mongo0_long.sh 2
+screen -t mongo3 3 ./load_run_mongo0_long.sh 3
+screen -t mongo4 4 ./load_run_mongo0_long.sh 4
+screen -t mongo5 5 ./load_run_mongo0_long.sh 5
+screen -t mongo6 6 ./load_run_mongo0_long.sh 6
+screen -t mongo7 7 ./load_run_mongo0_long.sh 7
+screen -t mongo8 8 ./load_run_mongo0_long.sh 8
+screen -t mongo9 9 ./load_run_mongo0_long.sh 9
+screen -t mongo10 10 ./load_run_mongo0_long.sh 10
+screen -t mongo11 11 ./load_run_mongo0_long.sh 11
