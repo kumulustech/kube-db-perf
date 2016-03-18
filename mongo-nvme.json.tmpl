@@ -1,0 +1,58 @@
+{
+    "kind": "Pod",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "mongoDB_NUMBER",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/mongoDB_NUMBER-best-effort",
+	"labels": {
+            "datawise.io/app": "mongoDB_NUMBER"
+        }
+    },
+    "spec": {
+        "volumes": [
+            {
+                "name": "volume-VOL_NUMBER",
+                "hostPath": {
+                    "path": "/mnt/nvmeVOL_NUMBER"
+                }
+            }
+        ],
+        "containers": [
+            {
+                "name": "mongoDB_NUMBER",
+                "image": "mongo",
+                "args": [
+                    "--wiredTigerCacheSizeGB",
+                    "5",
+		    "--replSet",
+		    "rs0-best-effort"
+                ],
+                "resources": {
+                    "limits": {
+                        "cpu": "2000m",
+                        "memory": "10Gi"
+                    },
+                    "requests": {
+                        "cpu": "2000m",
+                        "memory": "10Gi"
+                    }
+                },
+                "volumeMounts": [
+                    {
+                        "name": "volume-VOL_NUMBER",
+                        "mountPath": "/data/db"
+                    }
+                ],
+                "terminationMessagePath": "/dev/termination-log",
+                "imagePullPolicy": "IfNotPresent"
+            }
+        ],
+        "nodeSelector": {
+          "kubernetes.io/hostname": "DB_TARGET"
+        },
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst"
+    }
+}
