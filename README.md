@@ -32,6 +32,11 @@ mongo-svc.json.tmpl
 mongo_db_create.sh {0-11}
   This script will take a single parameter (the database replica set) and create the three pods and services from the .tmpl files (defined above).
 
+get_data.sh
+  Will extract the 99th and 95th percentile read/write data and the OPS data in a csv format.
+
+drop_db.sh
+  A helper script that will drop the database from all of the monogo dbs.  Doesn't clean up the files but allows for ovewriting.
 
 YCSB extensions:
 workload-mongo-perf-load
