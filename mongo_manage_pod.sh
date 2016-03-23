@@ -12,28 +12,20 @@ if [[ $# -le 0 ]]; then
   exit 1
 fi
 
-start_val=$[${2:-0}*3]
+offset=${3:-2}
+start_val=$[${2:-0}*3+${offset}]
 if [[ ${1} != start ]]; then 
-  for n in `seq ${start_val} $[${start_val}+2]`
-  do
-    kubectl delete svc mongo${n}
-    kubectl delete pod mongo${n}
-    sleep 5
-  done
+ kubectl delete svc mongo${start_val}
+ kubectl delete pod mongo${start_val}
+ sleep 5
 fi
 if [[ ${1} == restart ]]; then
-for n in `seq ${start_val} $[${start_val}+2]`
-do
-  for m in {1..3}
-  do
-    ssh kube-minion-${m} rm -rf /mnt/nvme${n}/*
-    sleep 2
-  done
-done
+ ssh kube-minion-$[${offset}+1] rm -rf /mnt/nvme$[${start_val}/3+1]/*
 fi
 if [[ ${1} != stop ]]; then
-  ./mongo_db_create.sh ${start_val} 3
-  sleep 2
-  ./mongo_replica_start.sh $[${start_val}/3]
+echo $start_val
+  ./mongo_db_create.sh ${2} ${offset}
+  sleep 5
+  ./mongo_start.sh ${2} ${offset}
 fi
 
