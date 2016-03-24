@@ -1,0 +1,69 @@
+{
+    "kind": "Pod",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "mysqlDB_NUMBER",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/mysqlDB_NUMBER-best-effort",
+	"labels": {
+            "datawise.io/app": "mysqlDB_NUMBER"
+        }
+    },
+    "spec": {
+        "volumes": [
+            {
+                "name": "volume-VOL_NUMBER",
+                "hostPath": {
+                    "path": "/mnt/nvmeVOL_NUMBER"
+                }
+            },
+            {
+                "name": "config",
+                "hostPath": {
+                    "path": "/mnt/config"
+                }
+            }
+        ],
+        "containers": [
+            {
+                "name": "mysqlDB_NUMBER",
+                "image": "percona",
+                "env": [
+                    { "name": "MYSQL_ROOT_PASSWORD",
+                      "value": "admin" },
+                    { "name": "MYSQL_DATABASE",
+		      "value": "ycsb" }
+                ],
+                "resources": {
+                    "limits": {
+                        "cpu": "2000m",
+                        "memory": "10Gi"
+                    },
+                    "requests": {
+                        "cpu": "2000m",
+                        "memory": "10Gi"
+                    }
+                },
+                "volumeMounts": [
+                    {
+                        "name": "volume-VOL_NUMBER",
+                        "mountPath": "/var/lib/mysql"
+                    },
+		    {
+			"name": "config",
+			"mountPath": "/etc/mysql/conf.d/",
+                        "readOnly": true
+                    }
+                ],
+                "terminationMessagePath": "/dev/termination-log",
+                "imagePullPolicy": "IfNotPresent"
+            }
+        ],
+        "nodeSelector": {
+          "kubernetes.io/hostname": "DB_TARGET"
+        },
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst"
+    }
+}
