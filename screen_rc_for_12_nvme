@@ -1,0 +1,13 @@
+startup_message off
+screen -t mongo0 0 ./load_run_mongo0_iperf.sh 0 0 pkt-nvme
+screen -t mongo1 1 ./load_run_mongo0_iperf.sh 1 0 pkt-nvme
+screen -t mongo2 2 ./load_run_mongo0_iperf.sh 2 0 pkt-nvme
+screen -t mongo3 3 ./load_run_mongo0_iperf.sh 3 0 pkt-nvme
+screen -t mongo4 4 ./load_run_mongo0_iperf.sh 4 0 pkt-nvme
+screen -t mongo5 5 ./load_run_mongo0_iperf.sh 5 0 pkt-nvme
+screen -t mongo6 6 ./load_run_mongo0_iperf.sh 6 0 pkt-nvme
+screen -t mongo7 7 ./load_run_mongo0_iperf.sh 7 0 pkt-nvme
+screen -t mongo8 8 ./load_run_mongo0_iperf.sh 8 0 pkt-nvme
+screen -t mongo9 9 ./load_run_mongo0_iperf.sh 9 0 pkt-nvme
+screen -t mongo10 10 ./load_run_mongo0_iperf.sh 10 0 pkt-nvme
+screen -t mongo11 11 ./load_run_mongo0_iperf.sh 11 0 pkt-nvme

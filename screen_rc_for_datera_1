@@ -1,0 +1,2 @@
+startup_message off
+screen -t d-mongo0 0 ./load_run_mongo0_iperf.sh 0 1 pkt-dtra
