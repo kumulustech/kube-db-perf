@@ -10,4 +10,4 @@ screen -t d-mongo7 7 ./load_run_mongo0_iperf.sh 7 1 pkt-dtra
 screen -t d-mongo8 8 ./load_run_mongo0_iperf.sh 8 1 pkt-dtra
 screen -t d-mongo9 9 ./load_run_mongo0_iperf.sh 9 1 pkt-dtra
 screen -t d-mongo10 10 ./load_run_mongo0_iperf.sh 10 1 pkt-dtra
-screen -t d-mongo11 11 ./load_run_mongo0_iperf.sh 0 11 pkt-dtra
+screen -t d-mongo11 11 ./load_run_mongo0_iperf.sh 11 1 pkt-dtra
