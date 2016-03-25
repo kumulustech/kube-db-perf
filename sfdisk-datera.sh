@@ -1,36 +1,11 @@
 #!/bin/bash
 # sfdisk script
 
-packet-block-storage-attach
-iter=0
-for n in `ls /dev/mapper/volume-*|cut -d'-' -f2`
-do
-sfdisk -Lf /dev/mapper-${n} <<EOF
-,,E
-,,
-,,
-,,
-,127182,L
-,127182,L
-,127182,L
-,127182,L
-,127182,L
-,,L
-EOF
+num_vol=`packet-block-storage-attach | wc -l`
 
-if [[ $iter -eq 0 ]]
-then
-  incr=-4
-else
-  incr=2
-fi
-
-for m in {5..10}
+for m in {0..$[${num_vol}-1]}
 do
-  mkdir /mnt/data$[${n}+${incr}]
-  mkfs.ext4 -L data$[${n}+${incr}] /dev/mapper/volume-${n}p${m}
-  echo "/dev/mapper/volume-${n}p${m} /mnt/data$[${m}+${incr}] ext4 defaults 0 2" >> /etc/fstab
+  mdm-${m}kdir /mnt/nvme$[${m}+1]
+  mkfs.ext4 -L dm-$m /dev/dm-$m
+  mount -o _netdev /dev/dm-$m /mnt/nvme$[${m}+1]
 done
-iter=1
-done
-mount -a
