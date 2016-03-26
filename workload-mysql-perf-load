@@ -1,0 +1,4 @@
+workload=com.yahoo.ycsb.workloads.CoreWorkload
+fieldcount=5
+fieldlength=800
+recordcount=10000000

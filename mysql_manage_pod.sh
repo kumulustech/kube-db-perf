@@ -8,15 +8,15 @@ if [[ $# -le 0 ]]; then
   echo ""
   echo "For example:"
   echo "    $0 start 3"
-  echo "will restart mongo9, mongo10, and mongo11"
+  echo "will restart mysql9, mongo10, and mongo11"
   exit 1
 fi
 
 offset=${3:-2}
 start_val=$[${2:-0}*3+${offset}]
 if [[ ${1} != start ]]; then 
- kubectl delete svc mongo${start_val}
- kubectl delete pod mongo${start_val}
+ kubectl delete svc mysql${start_val}
+ kubectl delete pod mysql${start_val}
  sleep 5
 fi
 if [[ ${1} == restart ]]; then
@@ -24,8 +24,8 @@ if [[ ${1} == restart ]]; then
 fi
 if [[ ${1} != stop ]]; then
 echo $start_val
-  ./mongo_db_create.sh ${2} ${offset}
+  ./mysql_db_create.sh ${2} ${offset}
   sleep 5
-  ./mongo_start.sh ${2} ${offset}
+  ./mysql_start.sh ${2} ${offset}
 fi
 

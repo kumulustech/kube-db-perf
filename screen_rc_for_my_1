@@ -1,0 +1,2 @@
+startup_message off
+screen -t mysql2 0 ./load_run_mysql_iperf.sh 0 2 pkt-nvme-mysql
