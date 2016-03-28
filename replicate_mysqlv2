@@ -1,0 +1,16 @@
+#!/bin/bash
+ssh sql-minion-3 "
+    cd /mnt/nvme1;
+    tar cf - * | (cd ../nvme2; tar xf -);
+    tar cf - * | (cd ../nvme3; tar xf -);
+    tar cf - * | (cd ../nvme4; tar xf -);
+    tar cf - * | (cd ../nvme5; tar xf -);
+    tar cf - * | (cd ../nvme6; tar xf -);
+    tar cf - * | (cd ../nvme7; tar xf -);
+    tar cf - * | (cd ../nvme8; tar xf -);
+    tar cf - * | (cd ../nvme9; tar xf -);
+    tar cf - * | (cd ../nvme10; tar xf -);
+    tar cf - * | (cd ../nvme11; tar xf -);
+    tar cf - * | (cd ../nvme12; tar xf -);
+  "
+

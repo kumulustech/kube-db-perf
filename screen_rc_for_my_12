@@ -1,0 +1,13 @@
+startup_message off
+screen -t mysql2 0 ./load_run_mysql_iperf.sh 0 2 pkt-nvme
+screen -t mysql5 2 ./load_run_mysql_iperf.sh 2 2 pkt-nvme
+screen -t mysql8 4 ./load_run_mysql_iperf.sh 4 2 pkt-nvme
+screen -t mysql11 6 ./load_run_mysql_iperf.sh 6 2 pkt-nvme
+screen -t mysql14 8 ./load_run_mysql_iperf.sh 8 2 pkt-nvme
+screen -t mysql17 10 ./load_run_mysql_iperf.sh 10 2 pkt-nvme
+screen -t mysql20 0 ./load_run_mysql_iperf.sh 12 2 pkt-nvme
+screen -t mysql23 2 ./load_run_mysql_iperf.sh 14 2 pkt-nvme
+screen -t mysql26 4 ./load_run_mysql_iperf.sh 16 2 pkt-nvme
+screen -t mysql29 6 ./load_run_mysql_iperf.sh 18 2 pkt-nvme
+screen -t mysql32 8 ./load_run_mysql_iperf.sh 20 2 pkt-nvme
+screen -t mysql35 10 ./load_run_mysql_iperf.sh 22 2 pkt-nvme

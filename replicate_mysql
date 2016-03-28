@@ -1,0 +1,6 @@
+#!/bin/bash
+ssh sql-minion-3 "
+  for n in {2..12} do
+    cd /mnt/nvme1; tar cf - * | (cd ../nvme$n; tar xf -) &
+  done"
+
