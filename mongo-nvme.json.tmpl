@@ -24,18 +24,18 @@
                 "image": "mongo",
                 "args": [
                     "--wiredTigerCacheSizeGB",
-                    "5",
+                    "2",
 		    "--replSet",
 		    "rs0-best-effort"
                 ],
                 "resources": {
                     "limits": {
                         "cpu": "2000m",
-                        "memory": "10Gi"
+                        "memory": "2Gi"
                     },
                     "requests": {
                         "cpu": "2000m",
-                        "memory": "10Gi"
+                        "memory": "2Gi"
                     }
                 },
                 "volumeMounts": [
