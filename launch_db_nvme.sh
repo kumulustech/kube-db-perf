@@ -9,7 +9,7 @@ echo "then we clean up any previous iostat info"
 ssh kube-minion-$[${offset}+1] "rm iostat*"
 scp iostat_capture.sh kube-minion-$[${offset}+1]:
 echo "and then we launch our test in a screen session"
-screen -dmS mogodb_nvme -c screen_rc_for_${scale}_nvme
+screen -dmS mogodb_nvme_${scale} -c screen_rc_for_${scale}_nvme
 sleep 30
 until [[ `ps -e | grep java | wc -l` -eq 0 ]]
 do
@@ -29,3 +29,4 @@ mv ~/10*run .
 ~/get_rw_ts.sh
 mv *.csv ../csv/
 cd
+tar cfz ${scale}_db_${date}.tgz ${scale}_db_${date}/
