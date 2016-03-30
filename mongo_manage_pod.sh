@@ -12,20 +12,17 @@ if [[ $# -le 0 ]]; then
   exit 1
 fi
 
-offset=${3:-2}
+offset=${3:-0}
 start_val=$[${2:-0}*3+${offset}]
 if [[ ${1} != start ]]; then 
  kubectl delete svc mongo${start_val}
  kubectl delete pod mongo${start_val}
  sleep 5
 fi
-if [[ ${1} == restart ]]; then
- ssh kube-minion-$[${offset}+1] rm -rf /mnt/nvme$[${start_val}/3+1]/*
-fi
 if [[ ${1} != stop ]]; then
 echo $start_val
   ./mongo_db_create.sh ${2} ${offset}
-  sleep 5
+  sleep 15
   ./mongo_start.sh ${2} ${offset}
 fi
 
