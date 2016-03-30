@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 scale=${1:-12}
-offset=${2:-0}
+offset=${2:-2}
 if [[ $scale -eq 12 ]]; then
 vals=`seq 0 1 11`
 elif [[ $scale -eq 6 ]]; then
