@@ -1,5 +1,5 @@
 startup_message off
-screen -t mongo0 0 ./load_run_mongo0_iperf.sh 0 0 pkt-nvme
-screen -t mongo3 3 ./load_run_mongo0_iperf.sh 3 0 pkt-nvme
-screen -t mongo6 6 ./load_run_mongo0_iperf.sh 6 0 pkt-nvme
-screen -t mongo9 9 ./load_run_mongo0_iperf.sh 9 0 pkt-nvme
+screen -t mongo0 0 ./load_run_mongo0_iperf.sh 0 0 pkt-nvme-4
+screen -t mongo3 3 ./load_run_mongo0_iperf.sh 3 0 pkt-nvme-4
+screen -t mongo6 6 ./load_run_mongo0_iperf.sh 6 0 pkt-nvme-4
+screen -t mongo9 9 ./load_run_mongo0_iperf.sh 9 0 pkt-nvme-4
