@@ -25,7 +25,7 @@ rm *.pid
 ~/iostat_clean.sh
 mv *.csv ../csv/
 cd ../run
-mv ~/10*run .
+mv ~/mongo*run .
 ~/get_rw_ts.sh
 mv *.csv ../csv/
 cd
