@@ -1,5 +1,5 @@
 startup_message off
-screen -t mysql-12-db-0 0 ./load_run_mysql_iperf.sh 0 2 pkt-nvme
-screen -t mysql-12-db-3 3 ./load_run_mysql_iperf.sh 3 2 pkt-nvme
-screen -t mysql-12-db-6 6 ./load_run_mysql_iperf.sh 6 2 pkt-nvme
-screen -t mysql-12-db-9 9 ./load_run_mysql_iperf.sh 9 2 pkt-nvme
+screen -t mysql-12-db-0 0 ./load_run_mysql_iperf.sh 0 2 pkt-nvme-4
+screen -t mysql-12-db-3 3 ./load_run_mysql_iperf.sh 3 2 pkt-nvme-4
+screen -t mysql-12-db-6 6 ./load_run_mysql_iperf.sh 6 2 pkt-nvme-4
+screen -t mysql-12-db-9 9 ./load_run_mysql_iperf.sh 9 2 pkt-nvme-4
