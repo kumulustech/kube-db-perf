@@ -6,8 +6,8 @@ echo "Launching test with ${scale} databases ${date}" | tee -a running-time.txt
 echo "First we ensure our databases are clean"
 ./db_nvme.sh $scale
 echo "then we clean up any previous iostat info"
-ssh kube-minion-$[${offset}+1] "rm iostat*"
-scp iostat_capture.sh kube-minion-$[${offset}+1]:
+ssh minion "rm iostat*"
+scp iostat_capture.sh minion:
 echo "and then we launch our test in a screen session"
 screen -dmS mogodb_nvme_${scale} -c screen_rc_for_${scale}_nvme
 sleep 30
@@ -20,7 +20,7 @@ date=`date +%Y%m%d%H%M`
 echo "Finished testing ${scale} databases on ${date}" | tee -a running-time.txt
 mkdir -p ${scale}_db_${date}/nvme/{iostat,csv,run}
 cd ${scale}_db_${date}/nvme/iostat
-scp kube-minion-1:iostat-* .
+scp minion:iostat-* .
 rm *.pid
 ~/iostat_clean.sh
 mv *.csv ../csv/

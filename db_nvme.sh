@@ -17,7 +17,7 @@ for db in ${vals}
 do
  ./mongo_manage_pod.sh stop ${db} ${offset} 
 done
-ssh kube-minion-$[${offset}+1] rm -rf /mnt/nvme$[${db}+1]/*
+ssh minion rm -rf /mnt/nvme$[${db}+1]/*
 for db in ${vals}
 do 
  ./mongo_manage_pod.sh start ${db} ${offset} 

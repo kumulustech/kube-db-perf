@@ -13,7 +13,7 @@ MONGO_ADDR=10.0.0.$[$n*3+20+$offset]
 
 ./bin/ycsb load mongodb -threads 128 -s -P workloads/workloada -P /root/workload-mongo-perf-load -p mongodb.url=mongodb://${MONGO_ADDR}:27017/ycsb?w=0 -cp .
 for m in 16 32 64; do
-pid=`ssh kube-minion-$[${offset}+1] "./iostat_capture.sh $n $m"`
+pid=`ssh minion "./iostat_capture.sh $n $m"`
 ./bin/ycsb run mongodb -threads ${m} -s -P workloads/workloada -P /root/workload-mongo-perf-run  -p exportmeasurementsinterval=1000 -p measurementtype=timeseries -p timeseries.granularity=1000 -p mongodb.readPreference=primary -p mongodb.url=mongodb://${MONGO_ADDR}:27017/ycsb?w=0 -cp .:/root -p exportfile=/root/mongo-$n-$3-$m-threads.run
-ssh kube-minion-$[${offset}+1] kill $pid
+ssh minion kill $pid
 done
