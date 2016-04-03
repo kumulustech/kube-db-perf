@@ -1,4 +1,5 @@
 #!/bin/bash
+launch_dir=${PWD}
 scale=${1:-12}
 offset=${2:-2}
 date=`date +%Y%m%d%H%M`
@@ -22,11 +23,11 @@ mkdir -p ${scale}_my_${date}/nvme/{iostat,csv,run}
 cd ${scale}_my_${date}/nvme/iostat
 scp sql-minion-3:iostat-* .
 rm *.pid
-~/iostat_clean.sh
+$launch_dir/iostat_clean.sh
 mv *.csv ../csv/
 cd ../run
 mv ~/mysql*run .
-~/get_rw_ts.sh
+$launch_dir/get_rw_ts.sh
 mv *.csv ../csv/
-cd
-tar cfz ${scale}_my_${date}.tgz ${scale}_my_${date}/
+cd $launch_dir
+tar cfz ~/${scale}_my_${date}.tgz $launch_dir/${scale}_my_${date}/
