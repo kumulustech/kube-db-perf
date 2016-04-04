@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 scale=${1:-12}
 offset=${2:-0}
 if [[ $scale -eq 12 ]]; then
