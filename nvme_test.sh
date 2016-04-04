@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 offset=${1:-0}
 for vals in 1 2 4 6 12
 do
