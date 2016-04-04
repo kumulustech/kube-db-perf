@@ -13,3 +13,15 @@ sfdisk -Lf /dev/nvme${n}n1 <<EOF
 ,,L
 EOF
 done
+
+i=1
+for n in 1 2 3
+do
+  for m in 5 6 7
+  do
+    mkfs.ext4 /dev/nvme${n}n1p${m}
+    mnt /dev/nvme${n}n1p${m} /mnt/nvme$i
+    i=$[$i+1]
+  done
+done
+
