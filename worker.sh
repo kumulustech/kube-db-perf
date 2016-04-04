@@ -26,9 +26,9 @@ if ( ! ps -ef | grep "/usr/bin/docker" | grep -v 'grep' &> /dev/null  ); then
 fi
 
 # Make sure k8s version env is properly set
-K8S_VERSION=${K8S_VERSION:-"1.2.0-alpha.7"}
+K8S_VERSION=${K8S_VERSION:-"1.2.0"}
 FLANNEL_VERSION=${FLANNEL_VERSION:-"0.5.5"}
-FLANNEL_IFACE=${FLANNEL_IFACE:-"eth0"}
+FLANNEL_IFACE=${FLANNEL_IFACE:-"eth0.140"}
 FLANNEL_IPMASQ=${FLANNEL_IPMASQ:-"true"}
 ARCH=${ARCH:-"amd64"}
 
@@ -39,6 +39,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # Make sure master ip is properly set
+MASTER_IP={$MASTER_IP:-172.16.140.9}
 if [ -z ${MASTER_IP} ]; then
     echo "Please export MASTER_IP in your env"
     exit 1

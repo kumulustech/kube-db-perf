@@ -26,11 +26,11 @@ if ( ! ps -ef | grep "/usr/bin/docker" | grep -v 'grep' &> /dev/null ); then
 fi
 
 # Make sure k8s version env is properly set
-K8S_VERSION=${K8S_VERSION:-"1.2.0-alpha.7"}
+K8S_VERSION=${K8S_VERSION:-"1.2.0"}
 ETCD_VERSION=${ETCD_VERSION:-"2.2.1"}
 FLANNEL_VERSION=${FLANNEL_VERSION:-"0.5.5"}
 FLANNEL_IPMASQ=${FLANNEL_IPMASQ:-"true"}
-FLANNEL_IFACE=${FLANNEL_IFACE:-"eth0"}
+FLANNEL_IFACE=${FLANNEL_IFACE:-"ens1f4d1.140"}
 ARCH=${ARCH:-"amd64"}
 
 # Run as root
@@ -38,7 +38,7 @@ if [ "$(id -u)" != "0" ]; then
     echo >&2 "Please run as root"
     exit 1
 fi
-
+MASTER_IP={$MASTER_IP:-172.16.140.9}
 # Make sure master ip is properly set
 if [ -z ${MASTER_IP} ]; then
     MASTER_IP=$(hostname -I | awk '{print $1}')
