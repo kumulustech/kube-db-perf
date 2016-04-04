@@ -20,7 +20,7 @@ do
   for m in 5 6 7
   do
     mkfs.ext4 /dev/nvme${n}n1p${m}
-    mnt /dev/nvme${n}n1p${m} /mnt/nvme$i
+    mount /dev/nvme${n}n1p${m} /mnt/nvme$i
     i=$[$i+1]
   done
 done
