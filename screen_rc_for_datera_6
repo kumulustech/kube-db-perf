@@ -1,7 +1,0 @@
-startup_message off
-screen -t d-mongo0 0 ./load_run_mongo0_iperf.sh 0 1 pkt-dtra
-screen -t d-mongo2 2 ./load_run_mongo0_iperf.sh 2 1 pkt-dtra
-screen -t d-mongo4 4 ./load_run_mongo0_iperf.sh 4 1 pkt-dtra
-screen -t d-mongo6 6 ./load_run_mongo0_iperf.sh 6 1 pkt-dtra
-screen -t d-mongo8 8 ./load_run_mongo0_iperf.sh 8 1 pkt-dtra
-screen -t d-mongo10 10 ./load_run_mongo0_iperf.sh 10 1 pkt-dtra
