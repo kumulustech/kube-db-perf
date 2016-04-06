@@ -1,12 +1,8 @@
 #!/bin/bash
 set -x
-offset=${1:-2}
-#for vals in 1 2 4 6 12
-for vals in 12
+offset=${1:-0}
+for vals in 12 6 4 2 1
 do
-for scale in ${vals}
-do
-./launch_db_mysql.sh ${scale}
-done
+./launch_db_mysql.sh ${vals}
 done
 

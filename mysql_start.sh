@@ -1,5 +1,5 @@
 #!/bin/bash
-offset=${2:-2}
+offset=${2:-0}
 until mysql -h10.0.0.$[$1*3+20+${offset}] -uroot -padmin ycsb <<EOF
 show tables;
 EOF

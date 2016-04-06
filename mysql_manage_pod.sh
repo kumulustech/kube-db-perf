@@ -12,7 +12,7 @@ if [[ $# -le 0 ]]; then
   exit 1
 fi
 
-offset=${3:-2}
+offset=${3:-0}
 start_val=$[${2:-0}*3+${offset}]
 if [[ ${1} != start ]]; then 
  kubectl delete svc mysql${start_val}
@@ -20,7 +20,7 @@ if [[ ${1} != start ]]; then
  sleep 5
 fi
 if [[ ${1} == restart ]]; then
- ssh sql-minion-$[${offset}+1] rm -rf /mnt/nvme$[${start_val}/3+1]/*
+ ssh kube-minion-$[${offset}+1] rm -rf /mnt/nvme$[${start_val}/3+1]/*
 fi
 if [[ ${1} != stop ]]; then
 echo $start_val

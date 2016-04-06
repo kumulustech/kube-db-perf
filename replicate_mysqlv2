@@ -1,5 +1,5 @@
 #!/bin/bash
-ssh sql-minion-3 "
+ssh kube-minion-1 "
     cd /mnt/nvme1;
     tar cf - * | (cd ../nvme2; tar xf -);
     tar cf - * | (cd ../nvme3; tar xf -);
