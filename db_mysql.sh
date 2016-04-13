@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 scale=${1:-12}
-offset=${2:-2}
+offset=${2:-0}
 if [[ $scale -eq 12 ]]; then
 vals=`seq 0 1 11`
 elif [[ $scale -eq 6 ]]; then
@@ -20,7 +20,7 @@ done
 # we only load the database once and then manually replicate
 # to the other nodes due to the length of time needed
 # to load the database the first time
-#ssh kube-minion-$[${offset}+1] rm -rf /mnt/nvme$[${db}+1]/*
+#ssh minion-$[${offset}+1] rm -rf /mnt/nvme$[${db}+1]/*
 for db in ${vals}
 do 
  ./mysql_manage_pod.sh start ${db} ${offset} 

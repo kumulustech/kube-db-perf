@@ -20,7 +20,7 @@ if [[ ${1} != start ]]; then
  sleep 5
 fi
 if [[ ${1} == restart ]]; then
- ssh kube-minion-$[${offset}+1] rm -rf /mnt/nvme$[${start_val}/3+1]/*
+ ssh minion-$[${offset}+1] rm -rf /mnt/nvme$[${start_val}/3+1]/*
 fi
 if [[ ${1} != stop ]]; then
 echo $start_val
