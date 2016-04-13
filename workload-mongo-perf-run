@@ -1,6 +1,0 @@
-fieldcount=5
-fieldlength=800
-recordcount=10000000
-operationcount=2000000
-readproportion=0.8
-updateproportion=0.2
